@@ -6,6 +6,7 @@ const medicineRoutes = require("./routes/medicineRoutes");
 const Medicine = require("./models/Medicine");  
 const healthController = require('./controllers/healthController');
 const cors = require("cors");
+const authRoutes = require('./routes/authRoutes');
 
 const { sendNotification } = require("./utils/notificationService");
 dotenv.config();
@@ -36,7 +37,7 @@ cron.schedule("* * * * *", async () => {
  
 app.use(cors()); 
 app.use(express.json()); 
-
+app.use('/auth', authRoutes);
 
  
 
